@@ -9,7 +9,8 @@
  *  Implementation of hook_install().
  */
 function sharedemail_install() {
-  $msg = t('WARNING: The e-mail address you are using, has already been registered on this site by another user. '.
+  $t = get_t();
+  $msg = $t('WARNING: The e-mail address you are using, has already been registered on this site by another user. '.
            'You should be aware that personal information such as password resets will be sent to this address. '.
            'We strongly recommend changing your registered address to a different e-mail address. '.
            'You can do this at any time from your account page when you login.');
@@ -17,7 +18,7 @@ function sharedemail_install() {
 
   db_query("UPDATE {system} SET weight = -99 WHERE name = 'sharedemail'");
 
-  drupal_set_message(t('The Shared E-mail module has been installed'));
+  drupal_set_message($t('The Shared E-mail module has been installed'));
 }
 
 /**
